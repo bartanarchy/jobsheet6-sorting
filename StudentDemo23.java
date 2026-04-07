@@ -1,19 +1,35 @@
+import java.util.Scanner;
+
 public class StudentDemo23 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         TopStudents23 topstudents = new TopStudents23(5);
 
-        topstudents.add(new Student23("2281", "Alice", "A", 3.9));
-        topstudents.add(new Student23("2282", "Bob", "A", 3.7));
-        topstudents.add(new Student23("2283", "Charlie", "A", 3.8));
-        topstudents.add(new Student23("2284", "David", "A", 3.6));
-        topstudents.add(new Student23("2285", "Eve", "A", 4.0));
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter ID: ");
+            String id = sc.nextLine();
 
-        System.out.println("Original student list:");
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Class: ");
+            String studentClass = sc.nextLine();
+
+            System.out.print("Enter GPA: ");
+            double gpa = sc.nextDouble();
+            sc.nextLine();
+
+            topstudents.add(new Student23(id, name, studentClass, gpa));
+        }
+
+        System.out.println("\nOriginal student list:");
         topstudents.print();
 
         topstudents.bubbleSort();
 
-        System.out.println("Sorted student list (by GPA, descending):");
+        System.out.println("\nSorted student list (by GPA, descending):");
         topstudents.print();
+
+        sc.close();
     }
 }
